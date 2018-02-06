@@ -74,7 +74,7 @@ public class Compressor extends Thread
             
 			while(Main.started)
 			{
-				if(! Main.jsonFilePath.isEmpty())
+				if(Main.compressText && ! Main.jsonFilePath.isEmpty())
 				{
 					fileName = Main.jsonFilePath.get(0);
 					Main.jsonFilePath.remove(fileName);
@@ -150,7 +150,7 @@ public class Compressor extends Thread
                     bw.flush();
                     bw.close();
 				}
-				else if( ! Main.imageFilePath.isEmpty())
+				else if(Main.compressImage &&  ! Main.imageFilePath.isEmpty())
 				{
 	        		start = System.currentTimeMillis();
 					fileName = Main.imageFilePath.get(0);

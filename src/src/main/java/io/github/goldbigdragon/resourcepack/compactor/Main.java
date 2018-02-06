@@ -35,7 +35,12 @@ public class Main {
 	public static ArrayList<Compressor> threads = new ArrayList<>();
 
 	public static int totalSize = 0;
-	private static BigInteger originalSize = new BigInteger("0"); 
+	private static BigInteger originalSize = new BigInteger("0");
+	
+
+	public static boolean compressText = false;
+	public static boolean compressImage = false;
+	
 	public static void main(String[] args)
 	{
 		String temp = null;
@@ -74,8 +79,6 @@ public class Main {
 		System.out.print(" ▶ ");
 		path = scanner.nextLine();
 		
-		boolean compressText = false;
-		boolean compressImage = false;
 		int threadAmount = 1;
 		
 		while(true)
@@ -267,9 +270,9 @@ public class Main {
 				getFilePath(new File(f.getAbsolutePath()));
 			else if (f.isFile())
 			{
-				if(f.getName().endsWith(".json") || f.getName().endsWith(".mcmeta"))
+				if(compressText&&f.getName().endsWith(".json") || f.getName().endsWith(".mcmeta"))
 					jsonFilePath.add(f.getAbsolutePath());
-				else if(f.getName().endsWith(".png") || f.getName().endsWith(".jpg") || f.getName().endsWith(".jpeg"))
+				else if(compressImage&&f.getName().endsWith(".png") || f.getName().endsWith(".jpg") || f.getName().endsWith(".jpeg"))
 					imageFilePath.add(f.getAbsolutePath());
 			}
 		}
